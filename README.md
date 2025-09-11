@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Convite de Casamento — MonaLisa & João
 
 Site minimalista e elegante para convite de casamento, confirmação de presença (RSVP) e contribuição via PIX.
@@ -95,3 +96,6 @@ Bom hack e felicidades! 💒
 ---
 
 Qualquer dúvida, edite os arquivos conforme sua necessidade!
+=======
+# cv-casamento
+>>>>>>> 278fac5e8051b5071af2ae656c32c67312385875
