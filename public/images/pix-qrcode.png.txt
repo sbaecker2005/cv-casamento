@@ -1,0 +1,2 @@
+Coloque aqui o arquivo real do QR Code com o nome: pix-qrcode.png
+(Substitua este .txt removendo a extensão .txt e adicionando a imagem PNG gerada do QR fornecido.)

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo - Como Usar as Imagens</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .example { border: 1px solid #ddd; padding: 20px; margin: 20px 0; }
+        .code { background: #f5f5f5; padding: 10px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Guia de Uso das Imagens - Site MonaLisa & João</h1>
+<!-- Referência movida: ver .trash/public/exemplo-imagens.html -->
+    <div class="example">
+        <h2>📁 Estrutura de Pastas Criada</h2>
+        <div class="code">
+public/images/
+├── hero-bg.jpg (placeholder)
+├── placeholder.jpg (placeholder)  
+├── gallery/
+│   ├── casal-1.jpg (seus momentos especiais)
+│   ├── casal-2.jpg
+│   └── casal-3.jpg
+└── venue/
+    ├── local-1.jpg (fotos do local)
+    ├── local-2.jpg
+    └── local-3.jpg
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>🎨 Componentes Criados</h2>
+        <ul>
+            <li><strong>OptimizedImage:</strong> Carregamento otimizado com placeholder e fallback</li>
+            <li><strong>ImageGallery:</strong> Galeria responsiva com modal de visualização</li>
+            <li><strong>HeroSection:</strong> Seção hero com background de imagem</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h2>🚀 Como Adicionar Suas Imagens</h2>
+        <ol>
+            <li>Otimize suas fotos (use TinyPNG.com ou Squoosh.app)</li>
+            <li>Renomeie conforme a estrutura:
+                <div class="code">
+hero-bg.jpg - Foto principal do casal (1920x1080)
+gallery/casal-1.jpg - Primeiro encontro (800x800)
+gallery/casal-2.jpg - Viagem especial (800x800)
+gallery/casal-3.jpg - Pedido de casamento (800x800)
+venue/local-1.jpg - Vista geral do local (800x600)
+venue/local-2.jpg - Local da cerimônia (800x600)
+venue/local-3.jpg - Local da recepção (800x600)
+                </div>
+            </li>
+            <li>Substitua os arquivos placeholder na pasta public/images/</li>
+            <li>Teste no navegador em http://localhost:5174</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <h2>📱 Funcionalidades da Galeria</h2>
+        <ul>
+            <li>✅ Grid responsivo (1 coluna mobile, 3 desktop)</li>
+            <li>✅ Modal de visualização em tela cheia</li>
+            <li>✅ Navegação por setas (← →)</li>
+            <li>✅ Navegação por teclado</li>
+            <li>✅ Legendas personalizadas</li>
+            <li>✅ Lazy loading automático</li>
+            <li>✅ Fallback para imagens quebradas</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h2>🎯 Para Personalizar</h2>
+        <p>No arquivo <code>src/routes/Home.tsx</code>, você pode:</p>
+        <ul>
+            <li>Alterar as legendas das fotos no array <code>galleryImages</code></li>
+            <li>Adicionar/remover imagens</li>
+            <li>Mudar o número de colunas da galeria</li>
+            <li>Trocar a imagem de fundo do hero</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h2>⚡ Performance</h2>
+        <ul>
+            <li>Imagens são carregadas sob demanda (lazy loading)</li>
+            <li>Placeholders aparecem enquanto carrega</li>
+            <li>Fallbacks automáticos para imagens quebradas</li>
+            <li>CSS otimizado para transições suaves</li>
+        </ul>
+    </div>
+
+    <p><strong>Pronto!</strong> Seu ambiente está preparado para as imagens. Adicione suas fotos e seu site de casamento ficará ainda mais bonito! 💕</p>
+</body>
+</html>

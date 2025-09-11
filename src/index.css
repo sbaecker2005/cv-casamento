@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-brand-cream text-brand-graphite font-sans antialiased; }
+  h1,h2,h3,h4 { @apply font-serif text-brand-coffee-700; }
+  ::selection { @apply bg-brand-sage-500 text-white; }
+}
+
+@layer components {
+  .glass { @apply bg-white/70 backdrop-blur-md border border-white/40; }
+  .btn-rounded { @apply inline-flex items-center gap-2 font-medium rounded-full px-6 py-3 transition focus:outline-none focus:ring-4; }
+  .btn-sage { @apply btn-rounded bg-brand-sage-500 text-white hover:bg-brand-sage-600 focus:ring-brand-sage-700; }
+  .btn-coffee { @apply btn-rounded bg-brand-coffee-500 text-white hover:bg-brand-coffee-700 focus:ring-brand-coffee-700; }
+}
+
+@layer utilities { .text-balance { text-wrap: balance; } }

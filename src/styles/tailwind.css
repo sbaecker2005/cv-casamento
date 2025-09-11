@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base reset refinado */
+@layer base {
+  html {
+    @apply scroll-smooth font-sans bg-brand-sage-50 text-brand-coffee-800;
+  }
+  h1,h2,h3,h4 {
+    @apply font-serif text-brand-coffee-700;
+  }
+  ::selection {
+    @apply bg-brand-sage-500 text-white;
+  }
+}
+
+/* Utilitários extras */
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/40;
+  }
+  .btn-rounded {
+    @apply inline-flex items-center gap-2 font-medium rounded-full px-6 py-3 transition focus:outline-none focus:ring-4;
+  }
+  .btn-sage {
+    @apply btn-rounded bg-brand-sage-500 text-white hover:bg-brand-sage-600 focus:ring-brand-sage-700;
+  }
+  .btn-coffee {
+    @apply btn-rounded bg-brand-coffee-500 text-white hover:bg-brand-coffee-600 focus:ring-brand-coffee-700;
+  }
+}
