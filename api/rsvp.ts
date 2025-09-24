@@ -37,6 +37,7 @@ export default async function handler(req: any, res: any) {
     res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   } catch (err: any) {
-    return res.status(400).json({ success: false, message: err?.message || 'Falha ao salvar RSVP' });
+    const message = err?.message || 'Falha ao salvar RSVP';
+    return res.status(/Invalid payload/.test(message) ? 400 : 500).json({ success: false, message });
   }
 }
