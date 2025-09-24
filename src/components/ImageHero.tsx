@@ -7,6 +7,8 @@ interface ImageHeroProps {
   ctaPrimaryLabel?: string;
   ctaSecondaryLabel?: string;
   imageIndex?: number;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 const prefersReduced = typeof window !== 'undefined'
@@ -18,12 +20,22 @@ export function ImageHero({
   subtitle = '24 de Agosto de 2025 • Espaço Flor de Lis',
   ctaPrimaryLabel = 'Confirmar Presença',
   ctaSecondaryLabel = 'Chave PIX',
-  imageIndex = 0
+  imageIndex = 0,
+  imageSrc = '/images/gallery/img1.jpg',
+  imageAlt = 'Foto destaque do casal'
 }: ImageHeroProps) {
   // A imagem agora deve ser passada via prop ou futuramente integrando outro módulo.
   // (placeholder de background removido até receber imagens locais)
   return (
-    <section className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[50vh] md:min-h-[70vh] max-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Imagem de fundo ajustada para cobrir, com foco levemente acima do centro para rostos */}
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        className="absolute inset-0 w-full h-full object-cover object-[center_30%] pointer-events-none select-none"
+        loading="eager"
+        decoding="async"
+      />
       <div
         aria-label={`Imagem destaque ${(imageIndex + 1)}`}
         className="absolute inset-0 w-full h-full bg-brand-sage-700/40"
