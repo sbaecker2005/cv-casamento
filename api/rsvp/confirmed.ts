@@ -12,6 +12,7 @@ export default async function handler(_req: any, res: any) {
           .toArray();
     return res.status(200).json({ success: true, count: items.length, data: items });
   } catch (err: any) {
+    console.error('[API ERROR] rsvp/confirmed', { message: err?.message, stack: err?.stack });
     return res.status(500).json({ success: false, message: err?.message || 'Internal error' });
   }
 }

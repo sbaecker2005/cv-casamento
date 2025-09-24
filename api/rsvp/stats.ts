@@ -20,6 +20,7 @@ export default async function handler(_req: any, res: any) {
     const companions = agg[0]?.sum ?? 0;
     return res.status(200).json({ total, confirmed, companions });
   } catch (err: any) {
+    console.error('[API ERROR] rsvp/stats', { message: err?.message, stack: err?.stack });
     return res.status(500).json({ success: false, message: err?.message || 'Internal error' });
   }
 }

@@ -51,6 +51,7 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   } catch (err: any) {
     const message = err?.message || 'Falha ao salvar RSVP';
+    console.error('[API ERROR] rsvp', { message, stack: err?.stack });
     return res.status(/Invalid payload/.test(message) ? 400 : 500).json({ success: false, message });
   }
 }
