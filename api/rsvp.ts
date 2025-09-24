@@ -1,8 +1,8 @@
 // Vercel Serverless Function for /api/rsvp with current Vite deployment
 // Mirrors the Next.js Route Handler behavior
-import { getDb } from '../lib/mongodb';
-import { RsvpSchema } from '../lib/schemas';
-import { memInsert, memFindAll } from '../lib/rsvpMemory';
+import { getDb } from '../lib/mongodb.js';
+import { RsvpSchema } from '../lib/schemas.js';
+import { memInsert, memFindAll } from '../lib/rsvpMemory.js';
 
 export default async function handler(req: any, res: any) {
   try {

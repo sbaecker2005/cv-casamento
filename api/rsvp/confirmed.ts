@@ -1,5 +1,5 @@
-import { getDb } from '../../lib/mongodb';
-import { memFindConfirmed } from '../../lib/rsvpMemory';
+import { getDb } from '../../lib/mongodb.js';
+import { memFindConfirmed } from '../../lib/rsvpMemory.js';
 
 export default async function handler(_req: any, res: any) {
   try {
