@@ -27,20 +27,22 @@ export function ImageHero({
   // A imagem agora deve ser passada via prop ou futuramente integrando outro módulo.
   // (placeholder de background removido até receber imagens locais)
   return (
-    <section className="relative w-full min-h-[50vh] md:min-h-[70vh] max-h-[90vh] flex items-center justify-center overflow-hidden">
+  <section className="relative w-full min-h-[45vh] md:min-h-[55vh] lg:min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Imagem de fundo ajustada para cobrir, com foco levemente acima do centro para rostos */}
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="absolute inset-0 w-full h-full object-cover object-[center_30%] pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover object-[70%_35%] pointer-events-none select-none"
         loading="eager"
         decoding="async"
       />
       <div
         aria-label={`Imagem destaque ${(imageIndex + 1)}`}
-        className="absolute inset-0 w-full h-full bg-brand-sage-700/40"
+        className="absolute inset-0 w-full h-full bg-brand-sage-700/35"
       />
   <div className="absolute inset-0 bg-gradient-to-br from-brand-sage-700/70 via-brand-sage-700/55 to-brand-coffee-700/40" />
+  {/* Máscara sutil na base para dar contraste sem cobrir o rosto */}
+  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
       <div className="relative z-10 max-w-4xl px-6 text-center text-white">
         <AnimatePresence>
           <motion.h1
