@@ -1,4 +1,4 @@
-import { getDb } from '../../lib/mongodb';
+import { getDb } from '@/lib/mongodb';
 import { memStats } from '../../lib/rsvpMemory';
 
 export default async function handler(_req: any, res: any) {

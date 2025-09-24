@@ -1,7 +1,7 @@
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-import { getDb } from 'lib/mongodb';
-import { RsvpSchema } from 'lib/schemas';
+import { getDb } from '@/lib/mongodb';
+import { RsvpSchema } from '@/lib/schemas';
 
 export async function POST(req: Request) {
   try {

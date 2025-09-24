@@ -1,6 +1,6 @@
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-import { getDb } from 'lib/mongodb';
+import { getDb } from '@/lib/mongodb';
 
 function unauthorized() {
   return new Response(JSON.stringify({ success: false, message: 'Unauthorized' }), {

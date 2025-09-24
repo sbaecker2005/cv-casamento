@@ -1,6 +1,6 @@
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-import { getDb } from 'lib/mongodb';
+import { getDb } from '@/lib/mongodb';
 
 export async function GET() {
   try {
