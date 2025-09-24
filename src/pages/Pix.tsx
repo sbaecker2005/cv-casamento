@@ -3,7 +3,6 @@ import { useState } from 'react';
 const PIX_KEY = '183.738.508.48'; // Chave PIX fallback atualizada
 
 export function Pix() {
-  const sideImg = undefined; // aguardando assets locais via content
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {

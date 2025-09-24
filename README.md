@@ -96,6 +96,37 @@ Bom hack e felicidades! 💒
 ---
 
 Qualquer dúvida, edite os arquivos conforme sua necessidade!
+
+## API (Next.js App Router)
+
+Variáveis de ambiente:
+- `MONGODB_URI` (obrigatório)
+- `MONGODB_DB` (padrão: `wedding`)
+- `ADMIN_TOKEN` (para exports)
+
+Rotas:
+- `POST /api/rsvp`
+- `GET /api/rsvp` (lista todos)
+- `GET /api/rsvp/confirmed` (apenas confirmados)
+- `GET /api/rsvp/stats` (totais)
+- `GET /api/rsvp/export.csv` (requer `Authorization: Bearer <ADMIN_TOKEN>`)
+- `GET /api/rsvp/export.xlsx` (requer `Authorization: Bearer <ADMIN_TOKEN>`)
+
+Exports com Bearer Token (exemplos):
+
+```bash
+curl -H "Authorization: Bearer $ADMIN_TOKEN" \
+   -o rsvp-confirmados.csv \
+   http://localhost:3000/api/rsvp/export.csv
+
+curl -H "Authorization: Bearer $ADMIN_TOKEN" \
+   -o rsvp-confirmados.xlsx \
+   http://localhost:3000/api/rsvp/export.xlsx
+```
+
+Observações:
+- Sem CORS ou proxy: o frontend consome caminhos relativos.
+- Persistência 100% em MongoDB Atlas.
 =======
 # cv-casamento
 >>>>>>> 278fac5e8051b5071af2ae656c32c67312385875
