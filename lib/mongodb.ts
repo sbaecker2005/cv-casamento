@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { attachDatabasePool } from '@vercel/functions';
+import * as vercelFns from '@vercel/functions';
 
 const dbName = process.env.MONGODB_DB || 'wedding';
 
@@ -20,7 +20,7 @@ function getClient(): MongoClient {
   } else {
     client = new MongoClient(uri);
     try {
-      attachDatabasePool(client);
+      (vercelFns as any)?.attachDatabasePool?.(client);
     } catch {
       // ignore if not available
     }
