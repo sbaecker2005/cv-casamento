@@ -1,7 +1,12 @@
 import { getDb } from '../../lib/mongodb';
+import { memStats } from '../../lib/rsvpMemory';
 
 export default async function handler(_req: any, res: any) {
   try {
+    if (!process.env.MONGODB_URI) {
+      const s = memStats();
+      return res.status(200).json(s);
+    }
     const db = await getDb();
     const total = await db.collection('rsvp').countDocuments();
     const confirmed = await db.collection('rsvp').countDocuments({ attending: true });
