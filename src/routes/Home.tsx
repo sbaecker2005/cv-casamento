@@ -5,8 +5,8 @@ import { EVENT } from "../lib/event";
 export default function Home() {
   return (
     <div className="space-y-12">
-      {/* Hero Section com imagem de fundo (opcional) */}
-      <HeroSection backgroundImage="/images/hero-bg.jpg">
+  {/* Hero Section com imagem de fundo (opcional) */}
+  <HeroSection backgroundImage="/images/gallery/img1.jpg">
         <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-4 drop-shadow-lg">
           {EVENT.couple}
         </h1>

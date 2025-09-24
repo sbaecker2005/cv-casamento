@@ -45,8 +45,11 @@ export default function Rsvp() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`HTTP ${res.status}: ${text.slice(0, 120)}`);
+      }
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Falha ao enviar');
       setFeedback({ ok: true, msg: json.message || 'Presença registrada!' });
       setFormData({ name: '', email: '', attending: 'sim', guests: 0, message: '', phone: '' });
     } catch (err) {

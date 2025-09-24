@@ -8,7 +8,7 @@ export async function GET() {
       .find({ attending: true })
       .sort({ created_at: -1 })
       .toArray();
-    return new Response(JSON.stringify({ success: true, data: items }), {
+    return new Response(JSON.stringify({ success: true, count: items.length, data: items }), {
       headers: { 'content-type': 'application/json' },
     });
   } catch (err: any) {

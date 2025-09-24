@@ -34,12 +34,15 @@ export function Rsvp() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`HTTP ${res.status}: ${text.slice(0, 120)}`);
+      }
       const json = await res.json();
-      if (!res.ok) throw json;
       setStatus({ type: 'ok', msg: json.message || 'Confirmado!' });
       e.currentTarget.reset();
     } catch (err: unknown) {
-      const msg = typeof err === 'object' && err && 'message' in err ? String((err as { message?: string }).message) : 'Erro no envio.';
+      const msg = err instanceof Error ? err.message : 'Erro no envio.';
       setStatus({ type: 'err', msg });
     } finally {
       setLoading(false);

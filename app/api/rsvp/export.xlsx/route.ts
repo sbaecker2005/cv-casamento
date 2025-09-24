@@ -21,7 +21,7 @@ export async function GET(req: Request) {
       .sort({ created_at: -1 })
       .toArray();
 
-  const wb = new ExcelJS();
+  const wb = new ExcelJS.Workbook();
     const ws = wb.addWorksheet('Confirmados');
     ws.columns = [
       { header: 'Nome', key: 'name', width: 30 },

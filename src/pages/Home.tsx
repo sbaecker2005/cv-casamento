@@ -7,7 +7,7 @@ import { EVENT } from '../lib/event';
 export function Home() {
   return (
     <main>
-      <ImageHero />
+  <ImageHero />
       <section aria-labelledby="detalhes" className="relative -mt-16 z-20">
         <div className="max-w-5xl mx-auto px-6">
           <div className="glass rounded-3xl shadow-2xl p-8 md:p-12">
