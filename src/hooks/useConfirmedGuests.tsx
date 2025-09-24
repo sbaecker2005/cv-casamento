@@ -35,11 +35,10 @@ export function useConfirmedGuests() {
       setError(null);
 
       const response = await fetch('/api/rsvp/confirmed');
-      
       if (!response.ok) {
-        throw new Error(`Erro ${response.status}: ${response.statusText}`);
+        const text = await response.text();
+        throw new Error(`HTTP ${response.status}: ${text.slice(0, 200)}`);
       }
-
       const data: ApiResponse = await response.json();
       
       if (!data.success) {

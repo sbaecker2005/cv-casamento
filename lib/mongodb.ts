@@ -1,6 +1,8 @@
 import { MongoClient } from 'mongodb';
-import * as vercelFns from '@vercel/functions';
+import { attachDatabasePool } from '@vercel/functions';
 
+if (!process.env.MONGODB_URI) throw new Error('MONGODB_URI is not set');
+const uri = process.env.MONGODB_URI as string;
 const dbName = process.env.MONGODB_DB || 'wedding';
 
 declare global {
@@ -8,35 +10,24 @@ declare global {
   var _mongoClient: MongoClient | undefined;
 }
 
-let client: MongoClient | undefined;
+let client: MongoClient;
 
-function ensureClient(): MongoClient {
-  if (client) return client;
-  const uri = process.env.MONGODB_URI;
-  if (!uri) {
-    throw new Error('MONGODB_URI não configurada no ambiente');
+if (process.env.NODE_ENV === 'development') {
+  if (!global._mongoClient) global._mongoClient = new MongoClient(uri);
+  client = global._mongoClient;
+} else {
+  client = new MongoClient(uri);
+  try {
+    attachDatabasePool(client);
+  } catch {
+    // ignore if not available
   }
-  if (process.env.NODE_ENV === 'development') {
-    if (!global._mongoClient) global._mongoClient = new MongoClient(uri);
-    client = global._mongoClient;
-  } else {
-    client = new MongoClient(uri);
-    try {
-      (vercelFns as any)?.attachDatabasePool?.(client);
-    } catch {
-      // ignore if not available
-    }
-  }
-  return client;
 }
 
 export async function getDb() {
-  const c = ensureClient();
-  // @ts-ignore – guard connect when needed
-  if (!(c as any).topology?.isConnected?.()) {
-    await c.connect();
-  }
-  return c.db(dbName);
+  // @ts-ignore - topology is not part of public types in v5
+  if (!client.topology?.isConnected?.()) await client.connect();
+  return client.db(dbName);
 }
 
 export type DbClient = MongoClient;

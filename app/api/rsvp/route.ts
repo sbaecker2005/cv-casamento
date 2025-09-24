@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { getDb } from 'lib/mongodb';
 import { RsvpSchema } from 'lib/schemas';
 
@@ -30,10 +32,14 @@ export async function POST(req: Request) {
       }
     );
   } catch (err: any) {
-    return new Response(JSON.stringify({ success: false, message: err?.message || 'Falha ao salvar RSVP' }), {
-      status: 400,
-      headers: { 'content-type': 'application/json' },
-    });
+    console.error('[API ERROR] rsvp/POST:', err);
+    return new Response(
+      JSON.stringify({ success: false, message: err?.message || 'Internal error' }),
+      {
+        status: 500,
+        headers: { 'content-type': 'application/json' },
+      }
+    );
   }
 }
 
@@ -49,9 +55,13 @@ export async function GET() {
       headers: { 'content-type': 'application/json' },
     });
   } catch (err: any) {
-    return new Response(JSON.stringify({ success: false, message: 'Internal error' }), {
-      status: 500,
-      headers: { 'content-type': 'application/json' },
-    });
+    console.error('[API ERROR] rsvp/GET:', err);
+    return new Response(
+      JSON.stringify({ success: false, message: err?.message || 'Internal error' }),
+      {
+        status: 500,
+        headers: { 'content-type': 'application/json' },
+      }
+    );
   }
 }

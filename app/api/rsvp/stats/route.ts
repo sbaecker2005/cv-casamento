@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { getDb } from 'lib/mongodb';
 
 export async function GET() {
@@ -20,7 +22,8 @@ export async function GET() {
       headers: { 'content-type': 'application/json' },
     });
   } catch (err: any) {
-    return new Response(JSON.stringify({ success: false, message: 'Internal error' }), {
+    console.error('[API ERROR] rsvp/stats/GET:', err);
+    return new Response(JSON.stringify({ success: false, message: err?.message || 'Internal error' }), {
       status: 500,
       headers: { 'content-type': 'application/json' },
     });

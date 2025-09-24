@@ -1,5 +1,6 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { getDb } from 'lib/mongodb';
-import ExcelJS from 'exceljs';
 
 function unauthorized() {
   return new Response(JSON.stringify({ success: false, message: 'Unauthorized' }), {
@@ -10,10 +11,10 @@ function unauthorized() {
 
 export async function GET(req: Request) {
   try {
-    const auth = req.headers.get('authorization') || '';
-    const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
-    if (!token || token !== process.env.ADMIN_TOKEN) return unauthorized();
+    const token = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
+    if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) return unauthorized();
 
+    const ExcelJS = (await import('exceljs')).default;
     const db = await getDb();
     const items = await db
       .collection('rsvp')
@@ -53,7 +54,8 @@ export async function GET(req: Request) {
       },
     });
   } catch (err: any) {
-    return new Response(JSON.stringify({ success: false, message: 'Internal error' }), {
+    console.error('[API ERROR] rsvp/export.xlsx/GET:', err);
+    return new Response(JSON.stringify({ success: false, message: err?.message || 'Internal error' }), {
       status: 500,
       headers: { 'content-type': 'application/json' },
     });
